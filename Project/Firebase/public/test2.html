@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<h1 id = "h1">My First Heading</h1>
+<script>
+  document.write("helloworld");
+</script>
+
+<script>
+
+var request = require('request');
+var cheerio = require('cheerio');
+
+request('http://www.hanyang.ac.kr/web/www/-249', function (error, response, html) {
+  if (!error && response.statusCode == 200) {
+
+    var $ = cheerio.load(html);
+    $("div.pop_img").each(function(i, element){
+     var meal = $(this).find("img");
+     //var mtext = meal.attr('alt');
+     mtext = meal.attr('alt');
+     console.log(mtext);
+     document.write("hello world!");
+   });
+
+   document.write("hello world!");
+
+  //  var $ = cheerio.load(html);
+  //  $("in-box").each(function(i, element){
+  //   var meal = $(this).find("li");
+  //   //var mtext = meal.attr('alt');
+  //   console.log(meal.attr('alt'));
+   //
+  //   });
+
+
+  }
+});
+
+</script>
+
+<p>My first paragraph.</p>
+
+
+</body>
+</html>

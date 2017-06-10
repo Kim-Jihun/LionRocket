@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="DemoApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="LionRocket입니다.">
+    <meta name="author" content="정보시스템">
+
+    <meta property="og:url" content="https://arudinossssss.firebaseapp.com/">
+    <meta property="og:title" content="LionRocket">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://arudinossssss.firebaseapp.com/img/sum.jpg">
+  <meta property="og:description" content="한양대학교 학생식당 혼잡도">
+     <style>
+       #map {
+
+         height: 400px;
+        width: none;
+       }
+
+    </style>
+
+
+
+
+    <title>한양대학교 학생식당 혼잡도</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+    <!-- 메뉴 크롤링-->
+    <script type="text/javascript" src = "bcraw3.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">LionRocket</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">Intro</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#congestion_map">Congestion Map</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#menu_head">Menu</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">We Are LionRocket</h1>
+                <hr>
+                <div style="font-size:4vmin;">LionRocket은 <span style=" background-color:black;" >당신의 편리함</span>을 위해 존재합니다. </div><br>
+            <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+
+
+
+
+
+            </div>
+        </div>
+    </header>
+
+   <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Enjoy Your Lunch!</h2>
+                    <hr class="light">
+                    <div style="font-size:3vmin;" class="text-faded">LionRocket은 실시간으로 학생식당의 혼잡도와
+                       식단표를 제공합니다.<br>혼잡도와 오늘의 메뉴를 살펴본 후 즐거운 점심을 즐기세요!
+                    </div>
+                      <hr>
+                    <a href="#congestion_map" class="page-scroll btn btn-default btn-xl sr-button">혼잡도 확인하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section  id="map_section">
+      <div class="container">
+          <div class="row">
+              <div id="congestion_map" class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Congestion_Map</h2>
+                <hr class="primary">
+              </div>
+
+  <!--
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">We've got what you need!</h2>
+                    <hr class="light">
+                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+                </div>
+            </div>
+        </div>
+    -->
+
+    <div class="container" ng-controller="DemoCtrl">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+      <div id="map" style="width:none"></div>
+    </div>
+
+       <div class="col-lg-4 col-md-4 col-sm-4" ng-controller="DemoCtrl">
+           <div class="panel panel-default">
+               <div class="panel-heading">
+                   <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Congestion level</h3>
+               </div>
+               <div class="panel-body">
+                   <div class="table-responsive">
+                       <table class="table table-bordered table-hover table-striped">
+                           <thead>
+                               <tr>
+                                   <th>식당명</th>
+                                   <th>혼잡도</th>
+                                   <th>해소예상시간</th>
+                                   <th>현재인원수</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td>학생식당</td>
+                                   <td> {{congestion_ratio}}</td>
+                                   <td>{{display_time}}</td>
+                                   <td>{{sensor_value}}</td>
+                               </tr>
+                               <tr>
+                                   <td>교직원식당</td>
+                                   <td> {{congestion_ratio}}</td>
+                                   <td>{{display_time}}</td>
+                                   <td>{{sensor_value}}</td>
+                               </tr>
+                               <tr>
+                                   <td>사랑방</td>
+                                   <td> {{congestion_ratio}}</td>
+                                   <td>{{display_time}}</td>
+                                   <td>{{sensor_value}}</td>
+                               </tr>
+                               <tr>
+                                   <td>신교직원식당</td>
+                                   <td> {{congestion_ratio}}</td>
+                                   <td>{{display_time}}</td>
+                                   <td>{{sensor_value}}</td>
+                               </tr>
+                               <tr>
+                                   <td>신학생식당</td>
+                                   <td> {{congestion_ratio}}</td>
+                                   <td>{{display_time}}</td>
+                                   <td>{{sensor_value}}</td>
+                               </tr>
+
+                               <tr>
+                                   <td>행원파크</td>
+                                   <td> {{congestion_ratio}}</td>
+                                   <td>{{display_time}}</td>
+                                   <td>{{sensor_value}}</td>
+                               </tr>
+
+                           </tbody>
+                       </table>
+                   </div>
+                   <div class="text-right">
+                       <a href="#menu_head">식당메뉴 확인하러가기 <i class="fa fa-arrow-circle-right"></i></a>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+     </div>
+     <hr>
+     <div class="col-lg-8 col-lg-offset-2 text-center">
+
+       <a href="#menu_head" class="page-scroll btn btn-primary btn-xl sr-button">메뉴확인하러가기</a>
+
+     </div>
+  </div>
+</div>
+</div>
+      <script >
+
+
+
+      function initMap() {
+
+
+      var hanyang = {lat:37.556671,lng: 127.046748};
+
+
+
+        var contentArray = [];
+        var markerArray = [];
+        var iterator = 1;
+
+         contentArray[0] = "";
+         contentArray[1] = "행원파크";
+         contentArray[2] = "생과대 교직원식당";
+         contentArray[3] = "신소재 학생식당(지하 1층)/ 교직원식당(7층)";
+         contentArray[4] = "사랑방";
+         contentArray[5] = "학생식당";
+
+
+         markerArray[0] = {lat: 37.557510, lng: 127.045331};
+         markerArray[1] = {lat:37.557292,lng: 127.048390};
+         markerArray[2] = {lat:37.556671,lng: 127.046748};
+         markerArray[3] = {lat: 37.554405,lng: 127.045226};
+         markerArray[4] = {lat:37.557595,lng: 127.044179};
+         markerArray[5] = {lat:37.556569,lng:127.043912};
+
+
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center:hanyang
+      });
+
+
+
+
+
+   function addMarker() {
+
+        var marker = new google.maps.Marker({
+
+            position:markerArray[iterator],
+             map: map
+        });
+       var infowindow = new google.maps.InfoWindow({
+             content: contentArray[iterator]
+          });
+
+       var marker = new google.maps.Marker({
+        position:markerArray[iterator],
+        map: map,
+        title: 'hanyang university'
+
+            });
+       marker.addListener('mouseover', function() {
+               infowindow.open(map, marker);
+
+         });
+      infowindow.open(map,marker);
+
+       iterator++;
+
+}
+
+
+
+
+      for (var i = 1; i<6; i++) {
+
+        addMarker();
+
+      }
+
+
+
+    }
+
+
+
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjIMGK03pGDxsSJnBWgvAk7nAr4kHPzXo&callback=initMap">
+      </script>
+  </section>
+
+     <section id = menu  ng-controller="DemoCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                  <h2 class="section-heading">오늘의 식단<Br><h2>
+                    <h4>
+                    <script type="text/javascript">
+
+                    var day = new Date();
+                    var week = new Array('일','월','화','수','목','금','토');
+                    document.write(day.getFullYear() + "년 "+(day.getMonth() + 1)+"월 "+ day.getDate()+"일 "+week[day.getDay()]+"요일 ");
+                    document.write( day.getHours()+ "시 "+ day.getMinutes()+"분 ");
+
+                    </script>
+
+                  </h4>
+
+                  <hr class="primary">
+
+        <div id="menu_head" class="col-sm-4 col-lg-4 col-md-4" >
+            <div class="thumbnail">
+                <img src="img/food_img/food_a.png" style="width: 320px; height: 150px;" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">$94.99</h4>
+                    <h4>학생식당</h4>
+                    <p>{{menu1}}</p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">선호도</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail" >
+                <img src="img/food_img/food_b.png" style="width: 320px; height: 150px;">
+                <div class="caption">
+                    <h4 class="pull-right">$94.99</h4>
+                    <h4>교직원식당</h4>
+                    <p> {{menu1}}</p>
+
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">선호도</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="img/food_img/food_c.png" style="width: 320px; height: 150px;" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">$94.99</h4>
+                    <h4>사랑방</h4>
+                    <p>{{menu1}}</p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">선호도</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="img/food_img/food_d.jpg" style="width: 320px; height: 150px;" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">$94.99</h4>
+                    <h4>신교직원식당</h4>
+                    <p>{{menu1}}</p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">선호도</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="img/food_img/food_e.png" style="width: 320px; height: 150px;" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">$94.99</h4>
+                    <h4>신학생식당</h4>
+                    <p>{{menu1}}</p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">선호도</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <img src="img/food_img/food_f.png" style="width: 320px; height: 150px;" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">$94.99</h4>
+                    <h4>행원파크</h4>
+                    <p>{{menu1}}</p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">선호도</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+   </div>
+
+
+      </section>
+                    <section ng-controller="DemoCtrl"><div><h1>{{arr1}}</h1></div></section>
+
+    <section id="contact"  ng-controller="DemoCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <div class="col-lg-8 col-lg-offset-2 text-left" >
+                    <p style="font-size:3vmin;">안녕하세요 <br>
+                      저희는 한양대학교 정보시스템학과 3학년<br> 김지훈 박준형 정승환입니다!<br>
+                    한양대학교 학생들의 편의를 위해<br> 앞으로 더 나은 서비스를 제공하도록 노력하겠습니다<br>
+                  불편사항이나 개선할 점은 언제든지<br> 아래의 연락처로 연락주세요!</p>
+                   </div>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact"></i>
+                    <p>010-3218-0000</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p><a href="mailto:tmdghks5466@naver.com">tmdghks5466@naver.com</a></p>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+
+
+
+   <!--angularjs-->
+   <script src="https://code.angularjs.org/1.2.6/angular.min.js"></script>
+   <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+   <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+
+
+  <script type="text/javascript">
+    var myApp = angular.module('DemoApp', ['firebase']);
+
+    function DemoCtrl($scope, $firebase) {
+
+        $scope.firebaseRef1 = new Firebase("https://donwork-233dd.firebaseio.com/Lion_Data");
+        $scope.temperatures1 = $firebase($scope.firebaseRef1);
+        var firebaseRef1 = new Firebase("https://donwork-233dd.firebaseio.com/Lion_Data");
+
+        $scope.firebaseRef2 = new Firebase("https://donwork-233dd.firebaseio.com/menu");
+        $scope.temperatures2 = $firebase($scope.firebaseRef2);
+        var firebaseRef2 = new Firebase("https://donwork-233dd.firebaseio.com/menu");
+
+        var myArray = new Array();
+       firebaseRef1.on('child_added',function(data,preChildKey){
+        var newtemp2= data.val();
+        var str_val = JSON.stringify(newtemp2.sensor_value);
+        var num_val = parseInt(str_val);
+
+        //console.log(str);
+        //console.log(parseInt(str));
+
+        if(myArray.length < 10){
+          myArray.push(num_val);
+        }
+        else{
+          myArray.push(num_val);
+          myArray.shift();
+        }
+
+        //console.log(myArray[myArray.length-2]);
+
+        var avg_num = (myArray[myArray.length-1]+myArray[myArray.length-2]+myArray[myArray.length-3])/3;
+        console.log(avg_num);
+
+
+
+        var ease_time = 0.0;
+        if(avg_num>25){
+          ease_time = 25;
+        }
+        else if (avg_num>20) {
+          ease_time = 20;
+        }
+        else if (avg_num>15) {
+          ease_time = 15;
+        }
+        else if (avg_num>10) {
+          ease_time = 10;
+        }
+        else if(avg_num>5){
+          ease_time = 5;
+        }
+        else{
+          ease_time = 0;
+        }
+
+      /*  console.log(newtemp2.sensor_value);
+        console.log(newtemp2.congestion_ratio);
+        console.log(newtemp2.post_time.Time_Key);
+        console.log(ease_time);
+        */
+
+        $scope.sensor_value=newtemp2.sensor_value;
+        $scope.congestion_ratio=newtemp2.congestion_ratio;
+        $scope.Time_Key=newtemp2.post_time.Time_Key;
+        $scope.display_time=ease_time;
+
+       });
+
+      firebaseRef2.on('child_added',function(data,preChildKey){
+        var newtemp3= data.val();
+          console.log(newtemp3.NEW_TEST);
+          //$scope.menu1=(newtemp3.NEW_TEST);
+          $scope.menu1=JSON.stringify(newtemp3.NEW_TEST);
+
+       });
+
+}
+  </script>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+
+
+
+</body>
+
+</html>
