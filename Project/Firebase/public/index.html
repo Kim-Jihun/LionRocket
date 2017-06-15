@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--declaring ng-app tag for using angularjs-->
 <html lang="en" ng-app="DemoApp">
 
 <head>
@@ -12,20 +13,17 @@
 
     <meta property="og:url" content="https://arudinossssss.firebaseapp.com/">
     <meta property="og:title" content="LionRocket">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://arudinossssss.firebaseapp.com/img/sum.jpg">
-  <meta property="og:description" content="한양대학교 학생식당 혼잡도">
-     <style>
-       #map {
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://arudinossssss.firebaseapp.com/img/sum.jpg">
+    <meta property="og:description" content="한양대학교 학생식당 혼잡도">
 
+    <!--Declaring google map Application as HTML5-->
+    <style>
+      #map {
          height: 400px;
-        width: none;
-       }
-
+         width: none;
+            }
     </style>
-
-
-
 
     <title>한양대학교 학생식당 혼잡도</title>
 
@@ -46,7 +44,7 @@
 
     <!-- Theme CSS -->
     <link href="css/creative.min.css" rel="stylesheet">
-    <!-- 메뉴 크롤링-->
+    <!--menu scrapping-->
     <script type="text/javascript" src = "bcraw3.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -90,8 +88,9 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
-    </nav>
+     </nav>
 
+   <!-- first section in web-->
     <header>
         <div class="header-content">
             <div class="header-content-inner">
@@ -99,15 +98,11 @@
                 <hr>
                 <div style="font-size:4vmin;">LionRocket은 <span style=" background-color:black;" >당신의 편리함</span>을 위해 존재합니다. </div><br>
             <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
-
-
-
-
-
             </div>
         </div>
     </header>
 
+   <!-- second section in web-->
    <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
@@ -120,10 +115,11 @@
                       <hr>
                     <a href="#congestion_map" class="page-scroll btn btn-default btn-xl sr-button">혼잡도 확인하기</a>
                 </div>
-            </div>
-        </div>
+             </div>
+         </div>
     </section>
 
+   <!-- Congestion_Map section in web-->
     <section  id="map_section">
       <div class="container">
           <div class="row">
@@ -131,27 +127,14 @@
                 <h2 class="section-heading">Congestion_Map</h2>
                 <hr class="primary">
               </div>
-
-  <!--
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
-                </div>
-            </div>
-        </div>
-    -->
-
-    <div class="container" ng-controller="DemoCtrl">
+     <!--don't forget to declaring ng-controller in HTML tag-->
+     <div class="container" ng-controller="DemoCtrl">
       <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
-      <div id="map" style="width:none"></div>
-    </div>
+        <div id="map" style="width:none"></div>
+        </div>
 
-       <div class="col-lg-4 col-md-4 col-sm-4" ng-controller="DemoCtrl">
+        <div class="col-lg-4 col-md-4 col-sm-4" ng-controller="DemoCtrl">
            <div class="panel panel-default">
                <div class="panel-heading">
                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Congestion level</h3>
@@ -215,41 +198,32 @@
                </div>
            </div>
        </div>
-
      </div>
      <hr>
      <div class="col-lg-8 col-lg-offset-2 text-center">
-
-       <a href="#menu_head" class="page-scroll btn btn-primary btn-xl sr-button">메뉴확인하러가기</a>
-
-     </div>
+         <a href="#menu_head" class="page-scroll btn btn-primary btn-xl sr-button">메뉴확인하러가기</a>
+    </div>
   </div>
+ </div>
 </div>
-</div>
-      <script >
-
-
-
+    <!--a JavasScript function that creates a map-->
+      <script>
       function initMap() {
 
-
-      var hanyang = {lat:37.556671,lng: 127.046748};
-
-
+        var hanyang = {lat:37.556671,lng: 127.046748}; ///setting up the center of google map
 
         var contentArray = [];
         var markerArray = [];
         var iterator = 1;
 
-         contentArray[0] = "";
+         contentArray[0] = "";    //setting content of information window
          contentArray[1] = "행원파크";
          contentArray[2] = "생과대 교직원식당";
          contentArray[3] = "신소재 학생식당(지하 1층)/ 교직원식당(7층)";
          contentArray[4] = "사랑방";
          contentArray[5] = "학생식당";
 
-
-         markerArray[0] = {lat: 37.557510, lng: 127.045331};
+         markerArray[0] = {lat: 37.557510, lng: 127.045331};//setting location of information window
          markerArray[1] = {lat:37.557292,lng: 127.048390};
          markerArray[2] = {lat:37.556671,lng: 127.046748};
          markerArray[3] = {lat: 37.554405,lng: 127.045226};
@@ -257,69 +231,53 @@
          markerArray[5] = {lat:37.556569,lng:127.043912};
 
 
+        var map = new google.maps.Map(document.getElementById('map'), { //setting up google map's ratio
+                zoom: 16,
+               center:hanyang
+        });
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center:hanyang
-      });
-
-
-
-
-
-   function addMarker() {
+      function addMarker() {  //adding marker in google map api
 
         var marker = new google.maps.Marker({
 
             position:markerArray[iterator],
              map: map
         });
-       var infowindow = new google.maps.InfoWindow({
+        var infowindow = new google.maps.InfoWindow({ //Add an info window
              content: contentArray[iterator]
-          });
+        });
 
-       var marker = new google.maps.Marker({
-        position:markerArray[iterator],
+        var marker = new google.maps.Marker({
+        position:markerArray[iterator],  //for declaring multi marker
         map: map,
         title: 'hanyang university'
 
-            });
-       marker.addListener('mouseover', function() {
-               infowindow.open(map, marker);
-
          });
-      infowindow.open(map,marker);
+        marker.addListener('mouseover', function() { // mouseover event for information window
+               infowindow.open(map, marker);
+        });
+        infowindow.open(map,marker);
 
-       iterator++;
-
-}
-
-
-
-
+        iterator++;
+       }
       for (var i = 1; i<6; i++) {
-
-        addMarker();
-
-      }
-
-
-
+          addMarker();
+         }
     }
-
-
-
-      </script>
+ </script>
+      <!-- Loading the Google Maps JavaScript API-->
       <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjIMGK03pGDxsSJnBWgvAk7nAr4kHPzXo&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjIMGK03pGDxsSJnBWgvAk7nAr4kHPzXo&callback=initMap">//private key for getting google map api
       </script>
-  </section>
+ </section>
 
-     <section id = menu  ng-controller="DemoCtrl">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                  <h2 class="section-heading">오늘의 식단<Br><h2>
+    <!-- food's menu section-->
+    <!--don't forget to declaring ng-controller in HTML tag-->
+<section id = menu  ng-controller="DemoCtrl">
+  <div class="container">
+     <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">오늘의 식단</h2><br>
                     <h4>
                     <script type="text/javascript">
 
@@ -329,12 +287,9 @@
                     document.write( day.getHours()+ "시 "+ day.getMinutes()+"분 ");
 
                     </script>
-
-                  </h4>
-
-                  <hr class="primary">
-
-        <div id="menu_head" class="col-sm-4 col-lg-4 col-md-4" >
+                    </h4><hr class="primary">
+          <!--Today's menu-->
+         <div id="menu_head" class="col-sm-4 col-lg-4 col-md-4" >
             <div class="thumbnail">
                 <img src="img/food_img/food_a.png" style="width: 320px; height: 150px;" alt="">
                 <div class="caption">
@@ -353,15 +308,14 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4 col-lg-4 col-md-4">
+          </div>
+          <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail" >
                 <img src="img/food_img/food_b.png" style="width: 320px; height: 150px;">
                 <div class="caption">
                     <h4 class="pull-right">$94.99</h4>
                     <h4>교직원식당</h4>
                     <p> {{menu1}}</p>
-
                 </div>
                 <div class="ratings">
                     <p class="pull-right">선호도</p>
@@ -373,9 +327,9 @@
                         <span class="glyphicon glyphicon-star-empty"></span>
                     </p>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-4 col-lg-4 col-md-4">
+             </div>
+           </div>
+          <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                 <img src="img/food_img/food_c.png" style="width: 320px; height: 150px;" alt="">
                 <div class="caption">
@@ -393,11 +347,11 @@
                         <span class="glyphicon glyphicon-star-empty"></span>
                     </p>
                 </div>
-            </div>
-        </div>
+             </div>
+           </div>
 
-        <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="thumbnail">
+           <div class="col-sm-4 col-lg-4 col-md-4">
+             <div class="thumbnail">
                 <img src="img/food_img/food_d.jpg" style="width: 320px; height: 150px;" alt="">
                 <div class="caption">
                     <h4 class="pull-right">$94.99</h4>
@@ -414,9 +368,9 @@
                         <span class="glyphicon glyphicon-star-empty"></span>
                     </p>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-sm-4 col-lg-4 col-md-4">
+           <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                 <img src="img/food_img/food_e.png" style="width: 320px; height: 150px;" alt="">
                 <div class="caption">
@@ -434,9 +388,9 @@
                         <span class="glyphicon glyphicon-star-empty"></span>
                     </p>
                 </div>
+             </div>
             </div>
-        </div>
-        <div class="col-sm-4 col-lg-4 col-md-4">
+           <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                 <img src="img/food_img/food_f.png" style="width: 320px; height: 150px;" alt="">
                 <div class="caption">
@@ -454,15 +408,16 @@
                         <span class="glyphicon glyphicon-star-empty"></span>
                     </p>
                 </div>
-            </div>
-        </div>
-      </div>
-   </div>
+               </div>
+             </div>
 
+           </div>
+         </div>
+       </div>
+  </section>
 
-      </section>
-                    <section ng-controller="DemoCtrl"><div><h1>{{arr1}}</h1></div></section>
-
+  <!--last section in web-->
+  <!--don't forget to declaring ng-controller in HTML tag-->
     <section id="contact"  ng-controller="DemoCtrl">
         <div class="container">
             <div class="row">
@@ -472,8 +427,8 @@
                     <div class="col-lg-8 col-lg-offset-2 text-left" >
                     <p style="font-size:3vmin;">안녕하세요 <br>
                       저희는 한양대학교 정보시스템학과 3학년<br> 김지훈 박준형 정승환입니다!<br>
-                    한양대학교 학생들의 편의를 위해<br> 앞으로 더 나은 서비스를 제공하도록 노력하겠습니다<br>
-                  불편사항이나 개선할 점은 언제든지<br> 아래의 연락처로 연락주세요!</p>
+                      한양대학교 학생들의 편의를 위해<br> 앞으로 더 나은 서비스를 제공하도록 노력하겠습니다<br>
+                      불편사항이나 개선할 점은 언제든지<br> 아래의 연락처로 연락주세요!</p>
                    </div>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
@@ -484,41 +439,35 @@
                     <i class="fa fa-envelope-o fa-3x sr-contact"></i>
                     <p><a href="mailto:tmdghks5466@naver.com">tmdghks5466@naver.com</a></p>
                 </div>
-            </div>
-        </div>
-
-</section>
-
-
-
+             </div>
+         </div>
+      </section>
 
    <!--angularjs-->
    <script src="https://code.angularjs.org/1.2.6/angular.min.js"></script>
    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
 
-
-  <script type="text/javascript">
+  <!--binding with angularjs and firebase-->
+   <script type="text/javascript">
     var myApp = angular.module('DemoApp', ['firebase']);
 
     function DemoCtrl($scope, $firebase) {
 
-        $scope.firebaseRef1 = new Firebase("https://donwork-233dd.firebaseio.com/Lion_Data");
+        $scope.firebaseRef1 = new Firebase("https://donwork-233dd.firebaseio.com/Lion_Data");//connecting with firebase Database address for data like congestion_ratio
         $scope.temperatures1 = $firebase($scope.firebaseRef1);
-        var firebaseRef1 = new Firebase("https://donwork-233dd.firebaseio.com/Lion_Data");
+        var firebaseRef1 = new Firebase("https://donwork-233dd.firebaseio.com/Lion_Data");//Get database reference
 
-        $scope.firebaseRef2 = new Firebase("https://donwork-233dd.firebaseio.com/menu");
+        $scope.firebaseRef2 = new Firebase("https://donwork-233dd.firebaseio.com/menu");//connecting with firebase Database address for data like food's menu
         $scope.temperatures2 = $firebase($scope.firebaseRef2);
-        var firebaseRef2 = new Firebase("https://donwork-233dd.firebaseio.com/menu");
+        var firebaseRef2 = new Firebase("https://donwork-233dd.firebaseio.com/menu");//Get database reference
 
         var myArray = new Array();
-       firebaseRef1.on('child_added',function(data,preChildKey){
+        firebaseRef1.on('child_added',function(data,preChildKey){ //this event will be fired once for each time a new child_data is added to our data
         var newtemp2= data.val();
-        var str_val = JSON.stringify(newtemp2.sensor_value);
+        var str_val = JSON.stringify(newtemp2.sensor_value);//for displaying the total number of people
         var num_val = parseInt(str_val);
 
-        //console.log(str);
-        //console.log(parseInt(str));
 
         if(myArray.length < 10){
           myArray.push(num_val);
@@ -528,14 +477,11 @@
           myArray.shift();
         }
 
-        //console.log(myArray[myArray.length-2]);
 
         var avg_num = (myArray[myArray.length-1]+myArray[myArray.length-2]+myArray[myArray.length-3])/3;
         console.log(avg_num);
 
-
-
-        var ease_time = 0.0;
+        var ease_time = 0.0; // algorithm for expected time to drop congestion ratio
         if(avg_num>25){
           ease_time = 25;
         }
@@ -555,12 +501,7 @@
           ease_time = 0;
         }
 
-      /*  console.log(newtemp2.sensor_value);
-        console.log(newtemp2.congestion_ratio);
-        console.log(newtemp2.post_time.Time_Key);
-        console.log(ease_time);
-        */
-
+       ///binding necessary data in firebase database using $scope
         $scope.sensor_value=newtemp2.sensor_value;
         $scope.congestion_ratio=newtemp2.congestion_ratio;
         $scope.Time_Key=newtemp2.post_time.Time_Key;
@@ -568,15 +509,14 @@
 
        });
 
-      firebaseRef2.on('child_added',function(data,preChildKey){
-        var newtemp3= data.val();
+      firebaseRef2.on('child_added',function(data,preChildKey){//this event will be fired once for each time a new child_data is added to our data
+          var newtemp3= data.val();
           console.log(newtemp3.NEW_TEST);
-          //$scope.menu1=(newtemp3.NEW_TEST);
           $scope.menu1=JSON.stringify(newtemp3.NEW_TEST);
 
        });
 
-}
+    }
   </script>
 
     <!-- jQuery -->
@@ -586,6 +526,7 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
+    <!-- tag for reading data in the web using firebase -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
@@ -593,8 +534,6 @@
     <!-- Theme JavaScript -->
     <script src="js/creative.min.js"></script>
 
-
-
-</body>
+ </body>
 
 </html>
